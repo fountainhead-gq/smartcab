@@ -151,7 +151,7 @@ class LearningAgent(Agent):
         if self.learning:           
             new_value = previous_value + self.alpha*(reward - previous_value)
             self.Q[state][action] = new_value
-            #self.Q[state][action] = (self.Q[state][action] * (1 - self.alpha)) + (reward * self.alpha)
+            
         return
 
 
