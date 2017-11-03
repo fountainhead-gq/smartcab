@@ -1,8 +1,10 @@
+# -*- coding: utf8 -*-
 import random
 import math
 from environment import Agent, Environment
 from planner import RoutePlanner
 from simulator import Simulator
+from collections import defaultdict
 
 class LearningAgent(Agent):
     """ An agent that learns to drive in the Smartcab world.
@@ -97,8 +99,9 @@ class LearningAgent(Agent):
         # If it is not, create a new dictionary for that state
         #   Then, for each action available, set the initial Q-value to 0.0
         if self.learning and state not in self.Q: 
-            self.Q[state] = {}
             # self.Q[state] = {'left': 0.0, 'right': 0.0, 'forward': 0.0, None: 0.0}
+            # self.Q[state] = {} 
+            self.Q[state] = defaultdict(float) # 初始化为0.0
             for act in self.valid_actions: 
                 self.Q[state][act] = 0.0
         return
